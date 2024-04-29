@@ -1,0 +1,79 @@
+.login-container {
+    background-color: #f0f2f5; /* Light background */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-form {
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .login-logo {
+    width: 100px;
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    color: #333; /* Darker text for contrast */
+    margin-bottom: 0.5em;
+  }
+  
+  p {
+    color: #555; /* Lighter text */
+    margin-bottom: 2em;
+  }
+  
+  /* Style overrides for Material-UI components can go here */
+  .MuiTextField-root {
+    margin-bottom: 1em; /* Space between text fields */
+  }
+  
+  .MuiButton-containedPrimary {
+    margin-top: 1em; /* Space above the button */
+    padding: 10px;
+    border-radius: 20px; /* Rounded button edges */
+  }
+  
+  .forgot-password {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 1em;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  .signup {
+    color: #333;
+    margin-top: 1em;
+  }
+  
+  .signup a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .signup a:hover {
+    text-decoration: underline;
+  }
+  
+  .google-login-button {
+    margin-top: 1em; /* Space above the button */
+    margin-bottom: 1em; /* Space below the button */
+    color: #757575; /* Google's button text color */
+    border-color: #757575; /* Google's button border color */
+    background-color: #fff; /* White background */
+    text-transform: none; /* Prevent uppercase transform */
+  }
+  
+  .google-login-button:hover {
+    border-color: #333; /* Darken border on hover */
+    color: #333; /* Darken text on hover */
+  }

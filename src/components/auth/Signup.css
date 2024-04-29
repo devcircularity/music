@@ -1,0 +1,49 @@
+.signup-container {
+    background-color: #f0f2f5; /* Light background */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .signup-form {
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #333; /* Darker text for contrast */
+    margin-bottom: 0.5em;
+  }
+  
+  p {
+    color: #555; /* Lighter text */
+    margin-bottom: 2em;
+  }
+  
+  /* Style overrides for Material-UI components */
+  .MuiTextField-root {
+    margin-bottom: 1em; /* Space between text fields */
+  }
+  
+  .MuiButton-containedPrimary {
+    padding: 10px;
+    border-radius: 20px; /* Rounded button edges */
+  }
+  
+  .signin-redirect {
+    color: #333;
+    margin-top: 1em;
+  }
+  
+  .signin-redirect a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .signin-redirect a:hover {
+    text-decoration: underline;
+  }

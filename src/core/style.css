@@ -1,0 +1,450 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --accent-color: #bb86fc;
+  --secondary-text-color: #9e9e9e;
+  --divider-color: #1f1f1f;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+
+
+
+.album-list-container, .tracklist-container {
+  margin-bottom: 100px;  /* Adjust this value based on the height of your PlayerBar */
+  background-color: var(--background-color);
+}
+
+.tracklist-container {
+  padding: 20px;
+}
+
+.album-info {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.album-info img {
+  width: 100%;
+  max-width: 300px; /* Limit the width of the album image */
+  height: auto;
+  border-radius: 8px;
+}
+
+.track .artist-name {
+  padding-left: 0;
+  margin-left: 0;
+  white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This will push the play-icon to the far right */
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+.track-details {
+  flex-grow: 1; /* Ensure the details take the available space */
+}
+
+.track-title,
+.artist-name {
+  text-align: left; /* Align text to the left */
+  margin: 0; /* Reset margin */
+}
+
+/* Additional styles to ensure proper spacing */
+.track-title {
+  font-size: 16px;
+  margin-bottom: 4px; /* Space between title and artist name */
+}
+
+.artist-name {
+  font-size: 14px;
+  color: #ccc; /* Lighter color for the artist name */
+}
+
+
+
+.play-icon {
+  font-size: 14px;
+  color: green; /* Visual cue for playing */
+  margin-left: 10px; /* Space between text and icon */
+}
+.music-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin: 0 2px;
+  background-color: green;
+}
+
+.music-dots {
+  display: flex;
+  align-items: center;
+}
+
+.music-wave {
+  display: inline-block;
+  width: 5px;
+  height: 20px;
+  border-radius: 5px;
+  margin: 0 2px;
+  background-color: green;
+  animation: wave-animation 0.5s ease-in-out infinite;
+}
+
+.music-wave:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.music-wave:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+@keyframes wave-animation {
+  0%, 100% { transform: scaleY(0.5); }
+  50% { transform: scaleY(1); }
+}
+
+
+/* Expanded-player */
+/* Expanded-player top bar */
+.expanded-player {
+  background-image: linear-gradient(to bottom, black 1%, rgba(0,0,0,0) 20%), 
+                    linear-gradient(to top, black 10%, rgba(0,0,0,0) 80%);
+  color: white; /* Ensures text is visible on dark background */
+}
+
+
+
+.expanded-player {
+  transition: transform 1s ease-in-out;
+  transform: translateY(0); /* Start state */
+}
+
+.expanded-player.minimizing {
+  transform: translateY(100%); /* End state */
+}
+
+.top-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px; /* Adjust padding as needed */
+  box-sizing: border-box;
+  position: absolute; /* Positioning it above the other content */
+  top: 0;
+  left: 0;
+}
+
+.minimize-button, .spacer {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 50px;  /* Ensure this matches the width of your button */
+  height: 50px; /* Ensure this matches the height of your button */
+  color: white;
+  font-size: 24px;
+  display: flex; /* To center the button content */
+  align-items: center;
+  justify-content: center;
+}
+
+.artist-name {
+  flex-grow: 1;
+  text-align: center;
+  color: white; /* Ensure text is visible on dark background */
+  font-size: 20px; /* Adjust size as needed */
+  padding: 0 20px; /* Added padding to ensure text does not touch the buttons */
+}
+
+.expanded-player {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+.expanded-player-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Just below the expanded player */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.expanded-album-art {
+    width: 60%; /* Adjust size accordingly */
+    max-width: 400px;
+    margin-bottom: 80px;
+}
+
+
+.track-info {
+    text-align: center;
+    color: white; /* Ensure text is visible on dark background */
+    margin-bottom: 30px;
+}
+
+/* Seek-bar custom styling */
+.seek-bar {
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  width: 100%;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.seek-bar::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.preload-indicator {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 2px;
+  background-color: rgba(100, 100, 250, 0.5);
+  transform: translateY(-50%);
+}
+
+
+.time-info {
+    color: white;
+}
+
+.play-pause-button {
+    font-size: 2em; /* Larger play/pause button */
+    padding: 10px 20px;
+    cursor: pointer;
+    background: none;
+    border: 2px solid white; /* Styled border for the button */
+    color: white;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.play-pause-button:hover {
+    background-color: white;
+    color: black;
+}
+.seek-bar {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background: #ddd;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s; /* Duration of the transition */
+  transition: opacity .2s, background-color .2s, width .2s; /* Add width transition for smooth sliding */
+}
+
+.seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px; /* Width of the slider handle */
+  height: 15px; /* Height of the slider handle */
+  border-radius: 50%; 
+  background: #4CAF50; /* Slider handle color */
+  cursor: pointer;
+  -webkit-transition: .2s; /* Duration of the transition */
+  transition: background-color .2s; /* Transition for background color */
+}
+
+.seek-bar::-webkit-slider-thumb:hover {
+  background: #45a049; /* Slightly darker green color for hover effect */
+}
+
+.seek-bar:focus::-webkit-slider-thumb {
+  background: #45a049; /* Same as hover effect */
+}
+
+/* Control buttons styling */
+.control-button {
+  background-color: transparent;
+  border: none;
+  margin: 0 15px;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Circular buttons for previous and next */
+.control-button.prev, .control-button.next {
+  border-radius: 50%;
+  width: 50px;  /* Circle size */
+  height: 50px;
+  color: white;
+  font-size: 18px; /* Adjust the size of the icons */
+  line-height: 50px; /* Align the text/icon vertically */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Play/Pause button styling */
+.control-button.playpause {
+  width: 80px;  /* Bigger circle size for play/pause */
+  height: 80px;
+  border-radius: 50%;
+  background-color: white;
+  color: black;
+  line-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Changes the color to black when the play button is active */
+.control-button.playpause.playing {
+  background-color: black;
+  color: white;
+}
+
+/* Hover effects */
+.control-button:hover {
+  background-color: #666; /* Lighter on hover for prev and next */
+}
+
+.control-button.playpause:hover {
+  color: black; /* Reverting to original color scheme on hover */
+  background-color: white; /* Background white when not playing */
+}
+
+/* Play/Pause button specific styling */
+.playpause-button {
+  font-size: 24px; /* Larger size for the main action button */
+  padding: 15px 22px; /* Larger touch area */
+}
+
+.playpause-button:hover, .playpause-button:focus {
+  background-color: #0056b3; /* Distinct color on hover/focus */
+}
+
+/* Time info */
+.time-info {
+  color: white;
+  margin-top: 10px;
+}
+
+
+.no-scroll {
+  overflow: hidden; /* Prevents scrolling */
+  position: fixed; /* Ensures the viewport stays in place */
+  width: 100%; /* Full width */
+}
+
+/* Player controls container */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Hide native outline on focus for a cleaner look */
+.seek-bar:focus, .control-button:focus {
+  outline: none;
+}
+
+
+
+/* Example of a media query for responsive design */
+@media (max-width: 600px) {
+  .expanded-album-art {
+    width: 80%; /* Larger percentage for smaller screens */
+  }
+  .controls button {
+    padding: 8px 16px; /* Smaller padding for smaller screens */
+    font-size: 14px; /* Smaller font size for better fit */
+  }
+}
+
+
+/* App Header*/
+/* App Header */
+.App-header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Default alignment for the title */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--background-color); /* Regular background color */
+  padding: 10px 20px;
+  color: var(--text-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.App-header.transparent {
+  background-color: transparent; /* Transparent background for specific routes */
+  justify-content: flex-start; /* Align content to the start, but the title is not shown here */
+}
+
+.App-header .back-button {
+  position: absolute;
+  margin-top: 50px; /* Ensure space between the back button and the title or edge */
+  color: white; /* Ensure visibility against transparent background */
+}
+
+body {
+  padding-top: 70px; /* Ensures body content does not overlap header */
+}

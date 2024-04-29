@@ -1,0 +1,108 @@
+/* PlayerBar.css */
+.player-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #282828;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.album-art {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.track-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Allow track info to take up as much space as possible */
+}
+
+.track-details {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start (left) */
+    flex-grow: 1;
+}
+
+
+.track-name, .artist-name {
+    font-size: 16px;
+}
+
+.controls {
+    flex-shrink: 0; /* Prevent shrinking */
+    margin-top: -5px; /* Adjust margin to move the button up */
+}
+
+
+.controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.progress-bar {
+    -webkit-appearance: none;
+    appearance: none;
+    width: calc(100% - 20px); /* Full width minus padding */
+    height: 5px;
+    background: grey;
+    outline: none;
+    border-radius: 5px;
+    margin: 5px 10px;
+}
+
+.progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    background: white; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 50%; /* Circular handle */
+}
+
+.progress-bar::-moz-range-thumb {
+    width: 10px; /* Set a specific slider handle width */
+    height: 10px; /* Slider handle height */
+    background: white; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 50%; /* Circular handle */
+}
+
+.progress-bar::-webkit-slider-runnable-track {
+    width: 100%; /* Take full-width of the slider */
+    height: 5px; /* Slider track height */
+    background: grey; /* Grey background */
+}
+
+.progress-bar::-moz-range-track {
+    width: 100%; /* Take full-width of the slider */
+    height: 5px; /* Slider track height */
+    background: grey; /* Grey background */
+}
+
+.progress-bar::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, white 0%, white var(--progress-percentage, 0%), grey var(--progress-percentage, 0%), grey 100%);
+}
+
+.progress-bar::-moz-range-progress {
+    background: white; /* White for progress */
+    height: 5px; /* Same height as the track */
+    border-radius: 5px 0 0 5px; /* Rounded corners on the left side */
+}
